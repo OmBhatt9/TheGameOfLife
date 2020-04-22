@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    tools:context=".SplashScreen">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="400dp"
+        android:layout_height="400dp"
+        android:layout_alignRight="@id/imageView2"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="false"
+        android:layout_marginTop="1dp"
+        android:src="@drawable/splashreal" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="match_parent"
+        android:layout_height="424dp"
+        android:layout_alignBottom="@id/imageView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="-330dp"
+        android:adjustViewBounds="false"
+        android:src="@drawable/lifetext" />
+
+    <TextView
+        android:id="@+id/textview1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/imageView"
+        android:layout_centerHorizontal="true"
+        android:textAlignment="center"
+        android:text="If experimenters have free will, then so do elementary particles."
+        android:textSize="18sp"
+        android:typeface="sans"
+        android:gravity="center_horizontal" />
+
+</RelativeLayout>
