@@ -1,10 +1,13 @@
 package com.example.thegameoflife.ui.home;
 
 import android.os.Bundle;
+import android.text.method.LinkMovementMethod;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -17,6 +20,7 @@ import com.example.thegameoflife.R;
 public class HomeFragment extends Fragment {
 
     private HomeViewModel homeViewModel;
+
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {

@@ -4,5 +4,23 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
-    <string name="conway_info1"></string>
+    <string name="linktointerview">
+    <a href="https://www.youtube.com/watch?v=xOCe5HUObD4">Conway\'s Life, Death, and The Monster Interview\n\n</a>
+    </string>
+    <string name="linktoturinginGOL">
+    <a href="http://rendell-attic.org/gol/tm.htm">A Turing Machine in the Game of Life</a>
+    </string>
+    <string name="linktofinite">
+    <a href="https://www.cl.cam.ac.uk/projects/raspberrypi/tutorials/turing-machine/one.html">More on Turing Completeness and Finite-State Machines</a>
+    </string>
+    <string name="linktofreewill">
+    <a href="https://arxiv.org/pdf/quant-ph/0604079.pdf">Conway\'s Paper on the Free Will Theorem (Philosophy)</a>
+    </string>
+    <string name="linktowrecord">
+    <a href="https://fermatslibrary.com/s/shortest-paper-ever-published-in-a-serious-math-journal-john-conway-alexander-soifer">Conway\'s Record-Holding 2 Word Math Paper</a>
+    </string>
+    <string name="linktojonvon">
+    <a href="https://en.wikipedia.org/wiki/Von_Neumann_universal_constructor">More on Von Neumann\'s Universal Constructor</a>
+    </string>
+    <string name="conway_info1">The Game of Life, in it\'s simplest definition, is a universe simulation. You are the Creator, who activates the Big Bang, and watch as existence unfolds. \n\nInspired by Von Neumann\'s universal constructor, Conway\'s Life has made a cult following in mathematics, CS, physics, and philosophy. \n\nDiscovering such properties at a time when computers were not prevalent, John H. Conway was a Princeton mathematician who has done phenomenal work in number theory, knot theory, combinatorics and on understanding the Monster Group function. \n\nHe was touted as one of the most logical mathematicians in the world. As Archimedes, Feynman and Salvadore Dali all packed into one. He left the world on April 11, 2020 due to COVID-19, having lived a world-changing and accomplished life. \n\nThis app was made by Om Bhatt and Paul Wei for CS125 at UIUC.</string>
 </resources>
