@@ -59,6 +59,7 @@
                 android:id="@+id/conwayinfo"
                 android:layout_width="350dp"
                 android:layout_height="wrap_content"
+                android:layout_below="@id/conwaypic"
                 android:layout_marginStart="8dp"
                 android:layout_marginLeft="8dp"
                 android:layout_marginEnd="8dp"
@@ -67,8 +68,7 @@
                 android:fontFamily="@font/ubuntureg"
                 android:gravity="left"
                 android:text="@string/conway_info1"
-                android:textSize="22sp"
-                android:layout_below="@id/conwaypic"
+                android:textSize="24sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
@@ -83,11 +83,11 @@
                 android:fontFamily="@font/ubuntureg"
                 android:clickable="true"
                 android:autoLink="all"
-                android:textSize="20sp"
+                android:textSize="22sp"
                 android:text=" Email: ombb2@illinois.edu\n\n
 Email: yangkai4@illinois.edu\n\n
 Phone: +12177990905\n\n
-Location: \n https://goo.gl/maps/DwNN3snm9h3WBqbz6\n\n\n"
+Location: https://goo.gl/maps/DwNN3snm9h3WBqbz6\n\n"
                 android:layout_below="@id/conwayinfo"
                 android:focusable="true" />
         </RelativeLayout>
