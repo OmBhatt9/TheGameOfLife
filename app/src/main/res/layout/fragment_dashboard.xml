@@ -6,18 +6,46 @@
     android:layout_height="match_parent"
     tools:context=".ui.dashboard.DashboardFragment">
 
-    <TextView
-        android:id="@+id/text_dashboard"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:gravity="center_horizontal" />
+    <ScrollView
+        android:id="@+id/scrollrules"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        >
+
+        <RelativeLayout
+            android:id="@+id/relativescrollrules"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/text_rulestopic"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/amaticbold"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginLeft="4dp"
+                android:textAlignment="textStart"
+                android:textSize="50sp"
+                android:text="RULES:"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:gravity="start" />
+
+            <TextView
+                android:id="@+id/rulesinfo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="4dp"
+                android:layout_marginTop="64dp"
+                android:fontFamily="@font/ubuntureg"
+                android:gravity="start"
+                android:text="The Life universe is terrifically simple. A square grid contains cells that are either alive or dead. The behaviour of each cell is dependent only on the state of its eight immediate neighbours, according to the following rules:\n\n Live cells:\n\n1. A live cell with zero or one live neighbours will die.\n2. A live cell with two or three live neighbours will remain alive.\n3. A live cell with four or more live neighbours will die.\n\n Dead cells:\n\n1. A dead cell with exactly three live neighbours becomes alive.\n2. In all other cases a dead cell will stay dead."
+                android:textAlignment="textStart"
+                android:textSize="22sp"
+                app:layout_constraintStart_toStartOf="@id/text_rulestopic"
+                app:layout_constraintTop_toBottomOf="@id/text_rulestopic" />
+        </RelativeLayout>
+    </ScrollView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
