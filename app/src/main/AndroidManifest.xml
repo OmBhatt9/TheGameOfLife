@@ -10,6 +10,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".GamePlayActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/title_activity_game_play"
+            android:theme="@style/FullscreenTheme"></activity>
+        <activity
             android:name=".MenuActivity"
             android:label="@string/title_activity_menu" />
         <activity android:name=".SplashScreen">
