@@ -25,12 +25,12 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginLeft="4dp"
-                android:textAlignment="textStart"
+                android:textAlignment="center"
                 android:textSize="50sp"
                 android:text="RULES:"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                android:gravity="start" />
+                android:gravity="center_horizontal" />
 
             <TextView
                 android:id="@+id/rulesinfo"
@@ -40,11 +40,34 @@
                 android:layout_marginTop="64dp"
                 android:fontFamily="@font/ubuntureg"
                 android:gravity="start"
-                android:text="The Life universe is terrifically simple. A square grid contains cells that are either alive or dead. The behaviour of each cell is dependent only on the state of its eight immediate neighbours, according to the following rules:\n\n Live cells:\n\n1. A live cell with zero or one live neighbours will die.\n2. A live cell with two or three live neighbours will remain alive.\n3. A live cell with four or more live neighbours will die.\n\n Dead cells:\n\n1. A dead cell with exactly three live neighbours becomes alive.\n2. In all other cases a dead cell will stay dead."
+                android:text="@string/rulesinfo"
                 android:textAlignment="textStart"
                 android:textSize="22sp"
                 app:layout_constraintStart_toStartOf="@id/text_rulestopic"
                 app:layout_constraintTop_toBottomOf="@id/text_rulestopic" />
+
+            <pl.droidsonroids.gif.GifImageView
+                android:id="@+id/conwaygif"
+                android:layout_width="match_parent"
+                android:layout_centerHorizontal="true"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                android:layout_below="@id/rulesinfo"
+                android:src="@drawable/conwaygif"
+                android:layout_marginBottom="32dp"/>
+
+            <Button
+                android:id="@+id/playbutton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/conwaygif"
+                android:text="PLAY!" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="75dp"
+                android:layout_below="@id/playbutton"
+                ></Space>
         </RelativeLayout>
     </ScrollView>
 

@@ -13,7 +13,7 @@
         android:layout_marginTop="180dp"
         android:scaleX="1.5"
         android:scaleY="1.5"
-        android:text="Accent Colors"
+        android:text="Accent Themes:"
         android:textColor="#000000"
         android:visibility="visible"
         app:layout_constraintEnd_toEndOf="parent"
@@ -98,7 +98,7 @@
         android:layout_marginTop="50dp"
         android:scaleX="1.5"
         android:scaleY="1.5"
-        android:text="music"
+        android:text="Music"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
