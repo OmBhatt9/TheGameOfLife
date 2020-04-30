@@ -62,7 +62,7 @@ public class SettingsFragment extends Fragment {
 
     public void playMusic(View v) {
         if (MenuActivity.player == null) {
-            MenuActivity.player = MediaPlayer.create(getContext(), R.raw.song);
+            MenuActivity.player = MediaPlayer.create(getContext(), R.raw.bettermusicithink);
             MenuActivity.player.setLooping(true);
         }
         MenuActivity.player.start();
