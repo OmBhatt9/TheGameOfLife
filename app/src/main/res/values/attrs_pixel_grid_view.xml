@@ -1,0 +1,7 @@
+<resources>
+    <declare-styleable name="PixelGridView">
+        <attr name="exampleString" format="string" />
+        <attr name="exampleColor" format="color" />
+        <attr name="exampleDrawable" format="color|reference" />
+    </declare-styleable>
+</resources>

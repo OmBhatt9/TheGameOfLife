@@ -5,6 +5,7 @@ import android.annotation.SuppressLint;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.graphics.Canvas;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.MotionEvent;
@@ -108,6 +109,11 @@ public class GamePlayActivity extends AppCompatActivity {
         // operations to prevent the jarring behavior of controls going away
         // while interacting with the UI.
         findViewById(R.id.dummy_button).setOnTouchListener(mDelayHideTouchListener);
+
+        PixelGridView pixelGrid = new PixelGridView(this);
+        pixelGrid.setColumns(20);
+        pixelGrid.setRows(40);
+        setContentView(pixelGrid);
     }
 
     @Override
