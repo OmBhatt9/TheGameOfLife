@@ -25,6 +25,11 @@ public class MenuActivity extends AppCompatActivity {
      */
     public static MediaPlayer player;
 
+    /**
+     * onCreate method to set up bottom navigation menu and associate each tab with corresponding layout.
+     * @param savedInstanceState Bundle object in case activity ends unexpectedly.
+     */
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

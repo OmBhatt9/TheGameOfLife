@@ -5,7 +5,7 @@
     <application
         android:allowBackup="true"
         android:icon="@mipmap/golifeicon"
-        android:label="@string/app_name"
+        android:label="Life"
         android:roundIcon="@mipmap/golifeicon_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">

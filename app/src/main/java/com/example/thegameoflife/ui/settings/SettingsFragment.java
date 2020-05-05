@@ -24,7 +24,7 @@ import static android.content.Context.MODE_PRIVATE;
 public class SettingsFragment extends Fragment {
 
     private SettingsViewModel notificationsViewModel;
-    public static Switch musicSwitch;
+    public Switch musicSwitch;
 
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -35,7 +35,7 @@ public class SettingsFragment extends Fragment {
 
         // music settings
         musicSwitch = root.findViewById(R.id.switch2);
-        if (MenuActivity.playing == false) {
+        if (!MenuActivity.playing) {
             final SharedPreferences sharedPrefs = getActivity().getSharedPreferences("com.example.xyle", MODE_PRIVATE);
             musicSwitch.setChecked(sharedPrefs.getBoolean("musicSwitch", false));
         } else {
@@ -62,7 +62,7 @@ public class SettingsFragment extends Fragment {
 
     public void playMusic(View v) {
         if (MenuActivity.player == null) {
-            MenuActivity.player = MediaPlayer.create(getContext(), R.raw.bettermusicithink);
+            MenuActivity.player = MediaPlayer.create(getContext(), R.raw.finalappmusic);
             MenuActivity.player.setLooping(true);
         }
         MenuActivity.player.start();

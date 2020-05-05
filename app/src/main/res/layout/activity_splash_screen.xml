@@ -15,7 +15,8 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="false"
         android:layout_marginTop="1dp"
-        android:src="@drawable/splashreal" />
+        android:src="@drawable/splashreal"
+        android:layout_alignEnd="@id/imageView2" />
 
     <ImageView
         android:id="@+id/imageView2"
@@ -36,7 +37,7 @@
         android:textAlignment="center"
         android:fontFamily="@font/amaticbold"
         android:text="@string/splashquote"
-        android:textSize="32sp"
+        android:textSize="37sp"
         android:typeface="sans"
         android:gravity="center_horizontal" />
 
