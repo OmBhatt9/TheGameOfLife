@@ -1,121 +1,114 @@
-package com.example.thegameoflife;
 
+package com.example.thegameoflife;
 import android.content.Context;
-import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
-import android.graphics.drawable.Drawable;
-import android.text.TextPaint;
+import android.graphics.Point;
+import android.graphics.Rect;
 import android.util.AttributeSet;
+import android.view.Display;
 import android.view.MotionEvent;
-import android.view.View;
+import android.view.SurfaceView;
+import android.view.WindowManager;
 
-import androidx.core.content.ContextCompat;
+public class PixelGridView extends SurfaceView implements Runnable {
 
-/**
- * TODO: document your custom view class.
- */
-public class PixelGridView extends View {
-    private int numColumns, numRows;
-    private int cellWidth, cellHeight;
-    int paintColor = ContextCompat.getColor(getContext(), R.color.white);
-    private Paint paint = new Paint();
-
-    private boolean[][] cellTouched;
+    public static final int DEFAULT_SIZE = 50;
+    public static final int DEFAULT_ALIVE_COLOR = Color.WHITE;
+    public static final int DEFAULT_DEAD_COLOR = Color.BLACK;
+    private Thread thread;
+    private boolean isRunning = false;
+    private int columnWidth = 1;
+    private int rowHeight = 1;
+    private int nbColumns = 1;
+    private int nbRows = 1;
+    private World world;
+    private Rect r = new Rect();
+    private Paint p = new Paint();
 
     public PixelGridView(Context context) {
-        this(context, null);
+        super(context);
+        initWorld();
     }
 
     public PixelGridView(Context context, AttributeSet attrs) {
         super(context, attrs);
-        TypedArray a=getContext().obtainStyledAttributes(
-                attrs,
-                R.styleable.PixelGridView);
-        //Don't forget this
-        a.recycle();
-        paint.setStyle(Paint.Style.FILL_AND_STROKE);
-        paint.setColor(paintColor);
-        paint.setStrokeWidth(2.5f);
-    }
-
-    public void setColumns(int numColumns) {
-        this.numColumns = numColumns;
-        calcHeightWidth();
-    }
-
-    public int getColumns() {
-        return numColumns;
-    }
-
-    public void setRows(int numRows) {
-        this.numRows = numRows;
-        calcHeightWidth();
-    }
-
-    public int getRows() {
-        return numRows;
+        initWorld();
     }
 
     @Override
-    protected void onSizeChanged(int w, int h, int oldw, int oldh) {
-        super.onSizeChanged(w, h, oldw, oldh);
-        calcHeightWidth();
+    public void run() {
+        while (isRunning) {
+            if (!getHolder().getSurface().isValid())
+                continue;
+
+            try {
+                Thread.sleep(100);
+            } catch (InterruptedException e) {
+            }
+
+            Canvas canvas = getHolder().lockCanvas();
+            world.nextGeneration();
+            drawCells(canvas);
+            getHolder().unlockCanvasAndPost(canvas);
+        }
     }
 
-    private void calcHeightWidth() {
-        if (numColumns < 1 || numRows < 1) {
-            return;
-        }
-
-        cellWidth = getWidth() / getColumns();
-        cellHeight = cellWidth;
-        //cellHeight = getHeight() / getNumRows();
-
-        cellTouched = new boolean[numColumns][numRows];
-
-        invalidate();
+    public void start() {
+        isRunning = true;
+        thread = new Thread(this);
+        thread.start();
     }
 
-    @Override
-    protected void onDraw(Canvas canvas) {
-        canvas.drawColor(Color.BLACK);
-        if (numColumns == 0 || numRows == 0) {
-            return;
+    public void stop() {
+        isRunning = false;
+
+        while (true) {
+            try {
+                thread.join();
+            } catch (InterruptedException e) {
+            }
+            break;
         }
 
-        int width = getWidth();
-        int height = getHeight();
-        for (int i = 0; i < numColumns; i++) {
-            for (int j = 0; j < numRows; j++) {
-                if (cellTouched[i][j]) {
-                    canvas.drawRect(i * cellWidth, j * cellHeight,
-                            (i + 1) * cellWidth, (j + 1) * cellHeight,
-                            paint);
-                }
+    }
+
+    private void initWorld() {
+        WindowManager wm = (WindowManager) getContext().getSystemService(Context.WINDOW_SERVICE);
+        Display display = wm.getDefaultDisplay();
+        Point point = new Point();
+        display.getSize(point);
+        nbColumns = point.x / DEFAULT_SIZE;
+        nbRows = point.y / DEFAULT_SIZE;
+        columnWidth = point.x / nbColumns;
+        rowHeight = point.y / nbRows;
+        world = new World(nbColumns, nbRows);
+    }
+
+    private void drawCells(Canvas canvas) {
+        for (int i = 0; i < nbColumns; i++) {
+            for (int j = 0; j < nbRows; j++) {
+                Cell cell = world.get(i, j);
+                r.set((cell.x * columnWidth) - 1, (cell.y * rowHeight) - 1,
+                        (cell.x * columnWidth + columnWidth) - 1,
+                        (cell.y * rowHeight + rowHeight) - 1);
+                // we change the color according the alive status of the cell
+                p.setColor(cell.alive ? DEFAULT_ALIVE_COLOR : DEFAULT_DEAD_COLOR);
+                canvas.drawRect(r, p);
             }
         }
-
-        for (int i = 1; i < numColumns; i++) {
-            canvas.drawLine(i * cellWidth, 0, i * cellWidth, height, paint);
-        }
-
-        for (int i = 1; i < numRows; i++) {
-            canvas.drawLine(0, i * cellHeight, width, i * cellHeight, paint);
-        }
     }
 
     @Override
-    public boolean onTouchEvent(MotionEvent ev) {
-        if (ev.getAction() == MotionEvent.ACTION_DOWN) {
-            int column = (int)(ev.getX() / cellWidth);
-            int row = (int)(ev.getY() / cellHeight);
-
-            cellTouched[column][row] = !cellTouched[column][row];
+    public boolean onTouchEvent(MotionEvent event) {
+        if (event.getAction() == MotionEvent.ACTION_DOWN) {
+            int i = (int) (event.getX() / columnWidth);
+            int j = (int) (event.getY() / rowHeight);
+            Cell cell = world.get(i, j);
+            cell.invert();
             invalidate();
         }
-
-        return true;
+        return super.onTouchEvent(event);
     }
 }

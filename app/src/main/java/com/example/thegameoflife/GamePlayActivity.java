@@ -86,6 +86,8 @@ public class GamePlayActivity extends AppCompatActivity {
         }
     };
 
+    private PixelGridView pixelGrid;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -96,23 +98,9 @@ public class GamePlayActivity extends AppCompatActivity {
         mControlsView = findViewById(R.id.fullscreen_content_controls);
         mContentView = findViewById(R.id.fullscreen_content);
 
-
-        // Set up the user interaction to manually show or hide the system UI.
-        mContentView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                toggle();
-            }
-        });
-
-        // Upon interacting with UI controls, delay any scheduled hide()
-        // operations to prevent the jarring behavior of controls going away
-        // while interacting with the UI.
         findViewById(R.id.dummy_button).setOnTouchListener(mDelayHideTouchListener);
 
-        PixelGridView pixelGrid = new PixelGridView(this);
-        pixelGrid.setColumns(20);
-        pixelGrid.setRows(40);
+        pixelGrid = new PixelGridView(this);
         setContentView(pixelGrid);
     }
 
@@ -123,16 +111,10 @@ public class GamePlayActivity extends AppCompatActivity {
         // Trigger the initial hide() shortly after the activity has been
         // created, to briefly hint to the user that UI controls
         // are available.
-        delayedHide(100);
+        delayedHide(200);
     }
 
-    private void toggle() {
-        if (mVisible) {
-            hide();
-        } else {
-            show();
-        }
-    }
+
 
     private void hide() {
         // Hide UI first
@@ -168,4 +150,16 @@ public class GamePlayActivity extends AppCompatActivity {
         mHideHandler.removeCallbacks(mHideRunnable);
         mHideHandler.postDelayed(mHideRunnable, delayMillis);
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        pixelGrid.start();
+    }
+
+//    @Override
+//    protected void onPause() {
+//        super.onPause();
+//        pixelGrid.stop();
+//    }
 }
